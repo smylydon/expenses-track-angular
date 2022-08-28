@@ -1,7 +1,7 @@
 {
   "projectType": "application",
   "sourceRoot": "apps/expenses/src",
-  "prefix": "angular-tailwind-nx",
+  "prefix": "nx",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",

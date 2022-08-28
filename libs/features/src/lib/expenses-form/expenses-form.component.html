@@ -1,0 +1,45 @@
+<div class="form max-w-sm mx-auto w-96">
+  <h1 class="font-bold pb-4 text-xl">Transaction</h1>
+  <form [formGroup]="expensesForm" (ngSubmit)="submit()">
+    <div class="grid gap-4">
+      <div class="input-group">
+        <input
+          type="text"
+          name="name"
+          formControlName="name"
+          placeholder="salary, house rent, sip"
+          class="mt-1 block w-full py-2 px-3 border border-gray-200 bg-white rounded-md focus:outline-none focus:ring-indigo-500 sm:text-sm;"
+        />
+      </div>
+
+      <select
+        name="type"
+        formControlName="type"
+        class="mt-1 block w-full py-2 px-3 border border-gray-200 bg-white rounded-md focus:outline-none focus:ring-indigo-500 sm:text-sm;"
+      >
+        <option value="Investment">Investment</option>
+        <option value="Expense">Expense</option>
+        <option value="Savings">Savings</option>
+      </select>
+
+      <div class="input-group">
+        <input
+          type="text"
+          name="amount"
+          formControlName="amount"
+          placeholder="amount"
+          class="mt-1 block w-full py-2 px-3 border border-gray-200 bg-white rounded-md focus:outline-none focus:ring-indigo-500 sm:text-sm;"
+        />
+      </div>
+      <div class="submit-btn">
+        <button
+          type="submit"
+          class="border py-2 text-white bg-indigo-500 w-full"
+          [disabled]="expensesForm.invalid"
+        >
+          Make Transaction
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

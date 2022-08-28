@@ -17,7 +17,8 @@
     "paths": {
       "@angular-tailwind-nx/api-interfaces": [
         "libs/api-interfaces/src/index.ts"
-      ]
+      ],
+      "@angular-tailwind-nx/features": ["libs/features/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
