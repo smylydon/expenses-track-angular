@@ -9,7 +9,7 @@ export const LABELS_FEATURE_KEY = 'labels';
 export interface LabelsState extends EntityState<LabelsEntity> {
   selectedId?: string | number; // which Labels record has been selected
   loaded: boolean; // has the Labels list been loaded
-  error?: string | null; // last known error (if any)
+  error?: Error | null; // last known error (if any)
 }
 
 export interface LabelsPartialState {
@@ -39,7 +39,17 @@ const reducer = createReducer(
   on(LabelsActions.loadLabelsFailure, (state, { error }) => ({
     ...state,
     error,
-  }))
+  })),
+  on(LabelsActions.deleteLabel, (state, action) => {
+    return { ...state, loaded: false, error: null };
+  }),
+  on(LabelsActions.deleteLabelSuccess, (state, action) => {
+    return labelsAdapter.removeOne(action.id, {
+      ...state,
+      loaded: true,
+      error: null,
+    });
+  })
 );
 
 export function labelsReducer(state: LabelsState | undefined, action: Action) {

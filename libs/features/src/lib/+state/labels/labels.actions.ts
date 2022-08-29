@@ -10,5 +10,20 @@ export const loadLabelsSuccess = createAction(
 
 export const loadLabelsFailure = createAction(
   '[Labels/API] Load Labels Failure',
-  props<{ error: any }>()
+  props<{ error: Error }>()
+);
+
+export const deleteLabel = createAction(
+  '[Labels/API] Delete Label',
+  props<{ id: string }>()
+);
+
+export const deleteLabelSuccess = createAction(
+  '[Labels/API] Delete Label Success',
+  props<{ id: string }>()
+);
+
+export const deleteLabelFailure = createAction(
+  '[Labels/API] Delete Label Failure',
+  props<{ error: Error }>()
 );

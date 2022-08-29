@@ -20,6 +20,25 @@ export class ApiService {
       })
     );
   }
+  deleteLabel(id: string): Observable<string> {
+    const body = { _id: id };
+    return this.http.delete<string>('labels', { body }).pipe(
+      map((response: any) => {
+        console.log(response);
+        return response as string;
+      })
+    );
+  }
+
+  addTransaction(model: TransactionsEntity): Observable<string> {
+    console.log(model);
+    return this.http.post<string>('transaction', JSON.stringify(model)).pipe(
+      map((response: any) => {
+        console.log(response);
+        return response as string;
+      })
+    );
+  }
 
   getAllTransactions(): Observable<TransactionsEntity[]> {
     return this.http
@@ -27,5 +46,15 @@ export class ApiService {
       .pipe(
         map((response: any) => (response.data as TransactionsEntity[]) || [])
       );
+  }
+
+  deleteTransaction(id: string): Observable<string> {
+    const body = { _id: id };
+    return this.http.delete<string>('transaction', { body }).pipe(
+      map((response: any) => {
+        console.log(response);
+        return response as string;
+      })
+    );
   }
 }

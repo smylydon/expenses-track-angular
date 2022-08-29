@@ -1,11 +1,16 @@
-<div class="item flex justify-center bg-gray-50 py-2 rounded-r borderStyle">
-  <button type="button" class="px-3" (click)="remove()">
-    <!-- 
-  <box-icon
-    name="trash"
-    color={category.color ?? "#e5e5e5"}
-    data-id={category._id ?? ""}
-  /> -->
+<div
+  class="item flex justify-center bg-gray-50 py-2 rounded-r borderStyle"
+  [style.border-color]="color"
+>
+  <button type="button" class="px-3">
+    <box-icon
+      #icon
+      name="trash"
+      (click)="remove()"
+      [color]="color"
+      [data-id]="transaction._id"
+    >
+    </box-icon>
   </button>
   <span class="block w-full">{{ transaction.name }}</span>
 </div>

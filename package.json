@@ -28,6 +28,7 @@
     "@ngrx/router-store": "~14.0.0",
     "@ngrx/store": "~14.0.0",
     "@nrwl/angular": "14.5.10",
+    "boxicons": "^2.1.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

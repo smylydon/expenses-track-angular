@@ -9,7 +9,11 @@ import { Store } from '@ngrx/store';
 
 import { LabelsState } from '../+state/labels/labels.reducer';
 import { initLabels } from '../+state/labels/labels.actions';
-import { initTransactions } from '../+state/transactions/transactions.actions';
+import {
+  addTransaction,
+  initTransactions,
+} from '../+state/transactions/transactions.actions';
+import { TransactionsEntity } from '../+state/transactions/transactions.models';
 
 @Component({
   selector: 'nx-expenses-form',
@@ -21,7 +25,7 @@ export class ExpensesFormComponent implements OnInit {
 
   public name: FormControl = new FormControl('', [
     Validators.required,
-    Validators.minLength(8),
+    Validators.minLength(3),
   ]);
   public type: FormControl = new FormControl('Investment', [
     Validators.required,
@@ -48,7 +52,9 @@ export class ExpensesFormComponent implements OnInit {
   }
 
   submit() {
-    this.expensesForm.invalid;
-    console.log('hello::', this.expensesForm.value);
+    const transaction: TransactionsEntity = this.expensesForm
+      .value as TransactionsEntity;
+
+    this.store.dispatch(addTransaction({ model: transaction }));
   }
 }

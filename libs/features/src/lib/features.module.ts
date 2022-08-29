@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ExpensesComponent } from './expenses/expenses.component';
@@ -16,7 +16,7 @@ import { LabelsEffects } from './+state/labels/labels.effects';
 
 import * as fromTransactions from './+state/transactions/transactions.reducer';
 import { TransactionsEffects } from './+state/transactions/transactions.effects';
-
+import 'boxicons/dist/boxicons.js';
 @NgModule({
   imports: [
     CommonModule,
@@ -40,5 +40,6 @@ import { TransactionsEffects } from './+state/transactions/transactions.effects'
     ExpensesFormComponent,
     TransactionComponent,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class FeaturesModule {}
