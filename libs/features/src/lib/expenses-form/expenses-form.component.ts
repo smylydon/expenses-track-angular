@@ -3,9 +3,13 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
-  Validator,
   Validators,
 } from '@angular/forms';
+import { Store } from '@ngrx/store';
+
+import { LabelsState } from '../+state/labels/labels.reducer';
+import { initLabels } from '../+state/labels/labels.actions';
+import { initTransactions } from '../+state/transactions/transactions.actions';
 
 @Component({
   selector: 'nx-expenses-form',
@@ -27,7 +31,11 @@ export class ExpensesFormComponent implements OnInit {
     Validators.required,
     Validators.pattern(/\d+/),
   ]);
-  constructor(private formBuilder: FormBuilder) {}
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private store: Store<LabelsState>
+  ) {}
 
   ngOnInit(): void {
     this.expensesForm = this.formBuilder.group({
@@ -35,6 +43,8 @@ export class ExpensesFormComponent implements OnInit {
       type: this.type,
       amount: this.amount,
     });
+
+    this.store.dispatch(initLabels());
   }
 
   submit() {
