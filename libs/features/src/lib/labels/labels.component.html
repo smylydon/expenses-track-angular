@@ -1,0 +1,20 @@
+<ng-container *ngIf="subtotals; else fetching">
+  <div
+    class="labels flex justify-between"
+    *ngFor="let subtotal of subtotals; trackBy: trackBy"
+  >
+    <div class="flex gap-2">
+      <div
+        class="w-2 h-3 rounded py-3"
+        [style.background-color]="subtotal.color || '#f9c74f'"
+      ></div>
+      <h3 class="text-md">{{ subtotal.type }}</h3>
+    </div>
+    <h3 class="font-bold">
+      {{ subtotal.percent | percent: '1.0-3' }}
+    </h3>
+  </div>
+</ng-container>
+<ng-template #fetching>
+  <div>Fetching....</div>
+</ng-template>

@@ -5,6 +5,8 @@ import { LabelsEntity } from './+state/labels/labels.models';
 export interface SubTotal {
   type: string;
   total: number;
+  color?: string;
+  percent?: number;
 }
 
 @Injectable({
@@ -26,16 +28,20 @@ export class HelperService {
       .value();
   }
 
-  getLabels(transaction: LabelsEntity[]) {
-    const amountSum = this.getSum(transaction, 'type');
+  getLabels(transaction: LabelsEntity[]): SubTotal[] {
+    const amountSum: SubTotal[] = <SubTotal[]>this.getSum(transaction, 'type');
     const total = _.sum(this.getSum(transaction));
-    const percentage = _(amountSum)
-      .map((obj: SubTotal) =>
-        _.assign(obj, { percent: (100 * obj.total) / total })
-      )
+    return _(amountSum)
+      .map((obj: SubTotal): SubTotal => {
+        const percent = obj.total / total;
+        return <SubTotal>{
+          color: obj.color,
+          total: obj.total,
+          type: obj.type,
+          percent: percent,
+        };
+      })
       .value();
-
-    return percentage;
   }
 
   chartData(transaction: LabelsEntity[]): any {

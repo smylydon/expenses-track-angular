@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { LabelsEntity } from '../+state/labels/labels.models';
 import { HelperService } from '../helper.service';
-import { Chart, ChartType, ArcElement } from 'chart.js';
+import { ChartType } from 'chart.js';
 
 @Component({
   selector: 'nx-expenses-graph',

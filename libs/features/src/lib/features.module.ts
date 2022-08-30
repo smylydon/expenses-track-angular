@@ -8,6 +8,7 @@ import { ExpensesGraphComponent } from './expenses-graph/expenses-graph.componen
 import { ExpensesLabelsComponent } from './expenses-labels/expenses-labels.component';
 import { ExpensesFormComponent } from './expenses-form/expenses-form.component';
 import { TransactionComponent } from './transaction/transaction.component';
+import { LabelsComponent } from './labels/labels.component';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -36,6 +37,7 @@ import 'boxicons/dist/boxicons.js';
   ],
   declarations: [
     ExpensesComponent,
+    LabelsComponent,
     ListComponent,
     ExpensesGraphComponent,
     ExpensesLabelsComponent,
