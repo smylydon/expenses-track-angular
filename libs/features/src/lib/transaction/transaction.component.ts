@@ -3,7 +3,6 @@ import {
   ElementRef,
   Input,
   OnChanges,
-  OnInit,
   SimpleChange,
   SimpleChanges,
   ViewChild,
@@ -21,7 +20,7 @@ import { deleteTransaction } from '../+state/transactions/transactions.actions';
 export class TransactionComponent implements OnChanges {
   @ViewChild('icon') boxicon: ElementRef;
   @Input() transaction: LabelsEntity;
-  color = '#e5e5e5';
+  public color = '#e5e5e5';
   constructor(private store: Store) {}
 
   ngOnChanges(changes: SimpleChanges): void {

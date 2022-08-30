@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -6,13 +6,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { LabelsEntity } from '../+state/labels/labels.models';
 
 import { LabelsState } from '../+state/labels/labels.reducer';
-import { initLabels } from '../+state/labels/labels.actions';
-import {
-  addTransaction,
-  initTransactions,
-} from '../+state/transactions/transactions.actions';
+
+import { addTransaction } from '../+state/transactions/transactions.actions';
 import { TransactionsEntity } from '../+state/transactions/transactions.models';
 
 @Component({
@@ -21,6 +19,7 @@ import { TransactionsEntity } from '../+state/transactions/transactions.models';
   styleUrls: ['./expenses-form.component.scss'],
 })
 export class ExpensesFormComponent implements OnInit {
+  @Input() labels: LabelsEntity[] | null;
   public expensesForm!: FormGroup; // eslint-disable-line
 
   public name: FormControl = new FormControl('', [
@@ -47,8 +46,6 @@ export class ExpensesFormComponent implements OnInit {
       type: this.type,
       amount: this.amount,
     });
-
-    this.store.dispatch(initLabels());
   }
 
   submit() {

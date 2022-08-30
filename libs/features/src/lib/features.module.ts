@@ -11,6 +11,7 @@ import { TransactionComponent } from './transaction/transaction.component';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { NgChartsModule } from 'ng2-charts';
 import * as fromLabels from './+state/labels/labels.reducer';
 import { LabelsEffects } from './+state/labels/labels.effects';
 
@@ -19,6 +20,7 @@ import { TransactionsEffects } from './+state/transactions/transactions.effects'
 import 'boxicons/dist/boxicons.js';
 @NgModule({
   imports: [
+    NgChartsModule,
     CommonModule,
     FeaturesRoutingModule,
     ReactiveFormsModule,

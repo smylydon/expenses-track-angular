@@ -6,8 +6,8 @@
       Expense Tracker
     </h1>
     <div class="grid md:grid-cols-2 gap-4">
-      <nx-expenses-graph></nx-expenses-graph>
-      <nx-expenses-form></nx-expenses-form>
+      <nx-expenses-graph [labels]="labels$ | async"></nx-expenses-graph>
+      <nx-expenses-form [labels]="labels$ | async"></nx-expenses-form>
     </div>
   </div>
 </div>
