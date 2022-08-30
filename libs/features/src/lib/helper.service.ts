@@ -22,6 +22,7 @@ export class HelperService {
         if (!type) return _.sumBy(obj, 'amount');
         return <SubTotal>{
           type: key,
+          color: obj[0].color,
           total: _.sumBy(obj, 'amount'),
         };
       })
