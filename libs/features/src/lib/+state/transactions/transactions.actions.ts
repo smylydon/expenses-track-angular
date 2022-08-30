@@ -1,44 +1,57 @@
 import { createAction, props } from '@ngrx/store';
 import { TransactionsEntity } from './transactions.models';
 
-export const initTransactions = createAction('[Transactions Page] Init');
+export enum TransactionActionTypes {
+  INITIALIZE = '[Transactions Page] Initialize',
+  ADD_TRANSACTION = '[Transactions/API] Add Transaction',
+  ADD_TRANSACTION_SUCCESS = '[Transaction/API] Add Transaction Success',
+  ADD_TRANSACTION_FAILURE = '[Transaction/API] Add Transaction Failure',
+  DELETE_TRANSACTION = '[Transactions/API] Delete Transaction',
+  DELETE_TRANSACTION_SUCCESS = '[Transaction/API] Delete Transaction Success',
+  DELETE_TRANSACTION_FAILURE = '[Transaction/API] Delete Transaction Failure',
+  LOAD_TRANSACTION = '[Transactions/API] Load Transaction',
+  LOAD_TRANSACTION_SUCCESS = '[Transactions/API] Load Transactions Success',
+  LOAD_TRANSACTION_FAILURE = '[Transactions/API] Load Transactions Failure',
+}
+
+export const initTransactions = createAction(TransactionActionTypes.INITIALIZE);
 
 export const loadTransactionsSuccess = createAction(
-  '[Transactions/API] Load Transactions Success',
+  TransactionActionTypes.LOAD_TRANSACTION_SUCCESS,
   props<{ transactions: TransactionsEntity[] }>()
 );
 
 export const loadTransactionsFailure = createAction(
-  '[Transactions/API] Load Transactions Failure',
+  TransactionActionTypes.LOAD_TRANSACTION_FAILURE,
   props<{ error: any }>()
 );
 
 export const addTransaction = createAction(
-  '[Transactions/API] Add Transaction',
+  TransactionActionTypes.ADD_TRANSACTION,
   props<{ model: TransactionsEntity }>()
 );
 
 export const addTransactionSuccess = createAction(
-  '[Transaction/API] Add Transaction Success',
+  TransactionActionTypes.ADD_TRANSACTION_SUCCESS,
   props<{ id: string }>()
 );
 
 export const addTransactionFailure = createAction(
-  '[Transaction/API] Add Transaction Failure',
+  TransactionActionTypes.ADD_TRANSACTION_FAILURE,
   props<{ error: Error }>()
 );
 
 export const deleteTransaction = createAction(
-  '[Transactions/API] Delete Transaction',
+  TransactionActionTypes.DELETE_TRANSACTION,
   props<{ id: string }>()
 );
 
 export const deleteTransactionSuccess = createAction(
-  '[Transaction/API] Delete Transaction Success',
+  TransactionActionTypes.DELETE_TRANSACTION_SUCCESS,
   props<{ id: string }>()
 );
 
 export const deleteTransactionFailure = createAction(
-  '[Transaction/API] Delete Transaction Failure',
+  TransactionActionTypes.DELETE_TRANSACTION_FAILURE,
   props<{ error: Error }>()
 );

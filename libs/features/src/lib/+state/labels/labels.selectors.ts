@@ -24,7 +24,6 @@ export const getLabelsError = createSelector(
 export const getAllLabels = createSelector(
   getLabelsState,
   (state: LabelsState) => {
-    console.log('state is:', state);
     return selectAll(state);
   }
 );

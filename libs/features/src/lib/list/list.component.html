@@ -2,7 +2,7 @@
   <h1 class="py-4 font-bold text-xl">History</h1>
   <ng-container *ngIf="items$ | async; else fetching">
     <nx-transaction
-      *ngFor="let item of items$ | async; index as i"
+      *ngFor="let item of items$ | async; trackBy: trackBy"
       [transaction]="item"
     ></nx-transaction>
   </ng-container>

@@ -7,6 +7,7 @@ import * as labelsActions from '../labels/labels.actions';
 import { ApiService } from '../../services/api.service';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { TransactionsEntity } from './transactions.models';
 
 @Injectable()
 export class TransactionsEffects {
@@ -33,8 +34,7 @@ export class TransactionsEffects {
       ofType(TransactionsActions.addTransaction),
       mergeMap(({ model }) => {
         return this.apiService.addTransaction(model).pipe(
-          map((response: any) => {
-            console.log('addTransaction::', response);
+          map(() => {
             return labelsActions.initLabels();
           }),
           catchError((error: Error) => {

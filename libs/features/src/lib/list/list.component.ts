@@ -15,11 +15,9 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.items$ = this.store.select(getAllLabels);
-    this.items$.subscribe((items) => console.log(items));
   }
 
   trackBy(index: number, item: LabelsEntity) {
-    console.log('trackby');
     return item._id;
   }
 }
