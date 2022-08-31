@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { LabelsEntity } from './+state/labels/labels.models';
+import { LabelsEntity } from '../+state/labels/labels.models';
 
 export interface SubTotal {
   type: string;

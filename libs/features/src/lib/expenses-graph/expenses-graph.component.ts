@@ -2,12 +2,11 @@ import {
   Component,
   Input,
   OnChanges,
-  OnInit,
   SimpleChange,
   SimpleChanges,
 } from '@angular/core';
 import { LabelsEntity } from '../+state/labels/labels.models';
-import { HelperService } from '../helper.service';
+import { HelperService } from '../services/helper.service';
 import { ChartType } from 'chart.js';
 
 @Component({

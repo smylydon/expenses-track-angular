@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { LabelsEntity } from '../+state/labels/labels.models';
-import { HelperService, SubTotal } from '../helper.service';
+import { HelperService, SubTotal } from '../services/helper.service';
 
 @Component({
   selector: 'nx-labels',
