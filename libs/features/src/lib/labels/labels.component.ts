@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { LabelsEntity } from '../+state/labels/labels.models';
 import { HelperService, SubTotal } from '../services/helper.service';
 
@@ -6,6 +6,7 @@ import { HelperService, SubTotal } from '../services/helper.service';
   selector: 'nx-labels',
   templateUrl: './labels.component.html',
   styleUrls: ['./labels.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LabelsComponent {
   @Input('labels') set setLabels(labels: LabelsEntity[] | null) {

@@ -1,9 +1,14 @@
-<div class="form max-w-sm mx-auto w-96">
+<div data-testid="expense-form-container" class="form max-w-sm mx-auto w-96">
   <h1 class="font-bold pb-4 text-xl">Transaction</h1>
-  <form [formGroup]="expensesForm" (ngSubmit)="submit()">
+  <form
+    data-testid="expenses-form"
+    [formGroup]="expensesForm"
+    (ngSubmit)="submit()"
+  >
     <div class="grid gap-4">
       <div class="input-group">
         <input
+          data-testid="expenses-name"
           type="text"
           name="name"
           formControlName="name"
@@ -13,6 +18,7 @@
       </div>
 
       <select
+        data-testid="expense-type"
         name="type"
         formControlName="type"
         class="mt-1 block w-full py-2 px-3 border border-gray-200 bg-white rounded-md focus:outline-none focus:ring-indigo-500 sm:text-sm;"
@@ -24,6 +30,7 @@
 
       <div class="input-group">
         <input
+          data-testid="expense-amount"
           type="text"
           name="amount"
           formControlName="amount"
@@ -33,6 +40,7 @@
       </div>
       <div class="submit-btn">
         <button
+          data-testid="expense-submit"
           type="submit"
           class="border py-2 text-white bg-indigo-500 w-full"
           [disabled]="expensesForm.invalid"

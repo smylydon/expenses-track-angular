@@ -7,5 +7,13 @@
     "expenses": "apps/expenses",
     "expenses-e2e": "apps/expenses-e2e",
     "features": "libs/features"
+  },
+  "architect": {
+    "build": {
+      "builder": "@angular-devkit/build-angular:browser",
+      "options": {
+        "allowedCommonJsDependencies": ["lodash"]
+      }
+    }
   }
 }

@@ -6,8 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { LabelsEntity } from '../+state/labels/labels.models';
 
+import { LabelsEntity } from '../+state/labels/labels.models';
 import { LabelsState } from '../+state/labels/labels.reducer';
 
 import { addTransaction } from '../+state/transactions/transactions.actions';

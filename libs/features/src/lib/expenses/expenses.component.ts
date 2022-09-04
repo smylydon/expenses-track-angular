@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+
 import { LabelsState } from '../+state/labels/labels.reducer';
 import { initLabels } from '../+state/labels/labels.actions';
 import { getAllLabels } from '../+state/labels/labels.selectors';
-import { Observable } from 'rxjs';
 import { LabelsEntity } from '../+state/labels/labels.models';
+
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'nx-expenses',
   templateUrl: './expenses.component.html',
   styleUrls: ['./expenses.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExpensesComponent implements OnInit {
   public labels$: Observable<LabelsEntity[]>;

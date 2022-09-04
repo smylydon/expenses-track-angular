@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   Input,
   OnChanges,
@@ -13,6 +14,7 @@ import { ChartType } from 'chart.js';
   selector: 'nx-expenses-graph',
   templateUrl: './expenses-graph.component.html',
   styleUrls: ['./expenses-graph.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExpensesGraphComponent implements OnChanges {
   @Input() labels: LabelsEntity[] | null;
