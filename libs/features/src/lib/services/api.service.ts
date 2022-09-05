@@ -13,7 +13,7 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   getAllLabels(): Observable<LabelsEntity[]> {
-    return this.http.get<LabelsEntity[]>('labels').pipe(
+    return this.http.get<LabelsEntity[]>('label').pipe(
       map((response: any) => {
         return response as LabelsEntity[];
       })
