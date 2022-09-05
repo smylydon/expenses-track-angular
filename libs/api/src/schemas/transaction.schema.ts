@@ -13,6 +13,9 @@ export class Transaction {
 
   @Prop({ default: Date.now })
   date: Date;
+
+  @Prop({ required: true })
+  amount: number;
 }
 
 export const TransactionSchema = SchemaFactory.createForClass(Transaction);

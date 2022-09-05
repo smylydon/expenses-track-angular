@@ -7,7 +7,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { TransactionDto } from '../../dto/transaction.dto';
+import { DummyDto, TransactionDto } from '../../dto/transaction.dto';
 import { TransactionService } from '../../services/transaction.service';
 
 @Controller('transaction')
@@ -37,8 +37,8 @@ export class TransactionController {
     return await this.service.update(id, transactionDto);
   }
 
-  @Delete(':id')
-  async delete(@Param('id') id: string) {
-    return await this.service.delete(id);
+  @Delete()
+  async delete(@Body() dummyDto: DummyDto) {
+    return await this.service.delete(dummyDto);
   }
 }
