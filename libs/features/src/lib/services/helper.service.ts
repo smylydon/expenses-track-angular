@@ -56,7 +56,7 @@ export class HelperService {
       data: {
         datasets: [
           {
-            label: 'My First Dataset',
+            label: 'Expenses Dataset',
             data: dataValue,
             backgroundColor,
             hoverOffset: 4,

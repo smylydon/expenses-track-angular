@@ -1,13 +1,16 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { AppComponent } from './app.component';
-import { RoutingModule } from './app.routing';
+
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 import { environment } from '../environments/environment';
-import { BaseUrlInterceptor } from './base-url.interceptor';
+import { BaseUrlInterceptor } from './misc/base-url.interceptor';
+import { metaReducers } from './misc/debug.metareducer';
+import { AppComponent } from './app.component';
+import { RoutingModule } from './app.routing';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +21,7 @@ import { BaseUrlInterceptor } from './base-url.interceptor';
     StoreModule.forRoot(
       {},
       {
-        metaReducers: !environment.production ? [] : [],
+        metaReducers: !environment.production ? metaReducers : [],
         runtimeChecks: {
           strictActionImmutability: true,
           strictStateImmutability: true,
@@ -26,7 +29,12 @@ import { BaseUrlInterceptor } from './base-url.interceptor';
       }
     ),
     EffectsModule.forRoot([]),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    !environment.production
+      ? StoreDevtoolsModule.instrument({
+          maxAge: 25, // Retains last 25 states
+          logOnly: environment.production, // Restrict extension to log-only mode
+        })
+      : [],
   ],
   providers: [
     { provide: 'BASE_API_URL', useValue: environment.apiUrl },
