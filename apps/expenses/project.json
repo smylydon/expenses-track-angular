@@ -15,7 +15,8 @@
         "inlineStyleLanguage": "scss",
         "assets": ["apps/expenses/src/favicon.ico", "apps/expenses/src/assets"],
         "styles": ["apps/expenses/src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "allowedCommonJsDependencies": ["boxicons", "lodash"]
       },
       "configurations": {
         "production": {
