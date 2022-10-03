@@ -1,6 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -25,6 +26,7 @@ import 'boxicons/dist/boxicons.js';
   imports: [
     NgChartsModule,
     CommonModule,
+    HttpClientModule,
     FeaturesRoutingModule,
     ReactiveFormsModule,
     StoreModule.forFeature(

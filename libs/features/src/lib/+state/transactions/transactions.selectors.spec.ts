@@ -11,8 +11,11 @@ describe('Transactions Selectors', () => {
   const getTransactionsId = (it: TransactionsEntity) => it._id;
   const createTransactionsEntity = (id: string, name = '') =>
     ({
-      _id,
-      name: name || `name-${_id}`,
+      _id: id,
+      name: name || `name-${id}`,
+      type: '',
+      amount: 0,
+      date: '',
     } as TransactionsEntity);
 
   let state: TransactionsPartialState;

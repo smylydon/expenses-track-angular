@@ -12,6 +12,9 @@ describe('Labels Reducer', () => {
   const createLabelsEntity = (_id: string, name = ''): LabelsEntity => ({
     _id,
     name: name || `name-${_id}`,
+    type: '',
+    amount: 0,
+    color: '',
   });
 
   describe('valid Labels actions', () => {
