@@ -5,7 +5,7 @@ import { CategoriesDto } from '../dto/categories.dto';
 import { Categories, CategoriesDocument } from '../schemas/categories.schema';
 
 @Injectable()
-export class CategoriesService {
+export class CategoryService {
   constructor(
     @InjectModel(Categories.name)
     private readonly model: Model<CategoriesDocument>

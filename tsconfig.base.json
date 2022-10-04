@@ -16,6 +16,7 @@
     "strictPropertyInitialization": false,
     "baseUrl": ".",
     "paths": {
+      "@angular-tailwind-nx/api-core": ["libs/api-core/src/index.ts"],
       "@angular-tailwind-nx/api-interfaces": [
         "libs/api-interfaces/src/index.ts"
       ],

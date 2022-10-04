@@ -1,13 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { TransactionDto } from '../dto/transaction.dto';
 import {
   Transaction,
   TransactionDocument,
 } from '../schemas/transaction.schema';
-import { CategoriesDto } from '../dto/categories.dto';
-import { Categories, CategoriesDocument } from '../schemas/categories.schema';
 
 export interface Label {
   _id: string;
@@ -21,9 +18,7 @@ export interface Label {
 export class LabelService {
   constructor(
     @InjectModel(Transaction.name)
-    private readonly transactioModel: Model<TransactionDocument>,
-    @InjectModel(Categories.name)
-    private readonly categoryModel: Model<CategoriesDocument>
+    private readonly transactioModel: Model<TransactionDocument>
   ) {}
 
   async findAll(): Promise<Label[] | string> {

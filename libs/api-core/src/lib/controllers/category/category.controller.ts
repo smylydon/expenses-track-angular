@@ -8,11 +8,11 @@ import {
   Put,
 } from '@nestjs/common';
 import { CategoriesDto } from '../../dto/categories.dto';
-import { CategoriesService } from '../../services/categories.service';
+import { CategoryService } from '../../services/category.service';
 
 @Controller('category')
 export class CategoryController {
-  constructor(private readonly service: CategoriesService) {}
+  constructor(private readonly service: CategoryService) {}
 
   @Get()
   async index() {

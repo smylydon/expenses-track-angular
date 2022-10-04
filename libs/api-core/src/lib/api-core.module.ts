@@ -3,7 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { CategoryController } from './controllers/category/category.controller';
 import { LabelController } from './controllers/label/label.controller';
 import { TransactionController } from './controllers/transaction/transaction.controller';
-import { CategoriesService } from './services/categories.service';
+import { CategoryService } from './services/category.service';
 import { TransactionService } from './services/transaction.service';
 import { LabelService } from './services/label.service';
 import {
@@ -21,6 +21,6 @@ import {
     ]),
   ],
   controllers: [CategoryController, LabelController, TransactionController],
-  providers: [CategoriesService, LabelService, TransactionService],
+  providers: [CategoryService, LabelService, TransactionService],
 })
-export class ApiModule {}
+export class ApiCoreModule {}
