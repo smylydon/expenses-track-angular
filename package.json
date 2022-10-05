@@ -7,7 +7,7 @@
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test",
+    "test": "nx test && nx run api:test && nx run api-core:test",
     "e2e": "nx e2e expenses-e2e"
   },
   "private": true,

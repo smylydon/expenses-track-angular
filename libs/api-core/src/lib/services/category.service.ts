@@ -7,7 +7,7 @@ import { Categories, CategoriesDocument } from '../schemas/categories.schema';
 @Injectable()
 export class CategoryService {
   constructor(
-    @InjectModel(Categories.name)
+    @InjectModel('Categories')
     private readonly model: Model<CategoriesDocument>
   ) {}
 

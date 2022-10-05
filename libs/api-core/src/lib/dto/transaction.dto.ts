@@ -1,6 +1,6 @@
 export class TransactionDto {
   name: string;
-  type: number;
+  type: string;
   date: Date;
   amount: number;
 }

@@ -4,7 +4,7 @@ import { Document } from 'mongoose';
 export type CategoriesDocument = Categories & Document;
 
 @Schema()
-export class Categories {
+export class Categories extends Document {
   @Prop()
   type: string = 'Investment';
 

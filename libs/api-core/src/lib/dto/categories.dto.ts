@@ -1,4 +1,4 @@
 export class CategoriesDto {
-  type: number;
+  type: string;
   color: string;
 }

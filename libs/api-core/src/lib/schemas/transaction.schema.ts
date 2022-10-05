@@ -4,7 +4,7 @@ import { Document } from 'mongoose';
 export type TransactionDocument = Transaction & Document;
 
 @Schema()
-export class Transaction {
+export class Transaction extends Document {
   @Prop()
   name: string = 'Annonymous';
 
