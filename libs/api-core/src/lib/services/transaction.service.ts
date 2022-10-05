@@ -6,16 +6,13 @@ import {
   Transaction,
   TransactionDocument,
 } from '../schemas/transaction.schema';
-import { CategoriesDto } from '../dto/categories.dto';
 import { Categories, CategoriesDocument } from '../schemas/categories.schema';
 
 @Injectable()
 export class TransactionService {
   constructor(
     @InjectModel(Transaction.name)
-    private readonly model: Model<TransactionDocument>,
-    @InjectModel(Categories.name)
-    private readonly categoryModel: Model<CategoriesDocument>
+    private readonly model: Model<TransactionDocument>
   ) {}
 
   async findAll(): Promise<Transaction[]> {
