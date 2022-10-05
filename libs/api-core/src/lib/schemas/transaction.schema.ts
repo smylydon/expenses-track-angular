@@ -4,12 +4,12 @@ import { Document } from 'mongoose';
 export type TransactionDocument = Transaction & Document;
 
 @Schema()
-export class Transaction extends Document {
-  @Prop()
-  name: string = 'Annonymous';
+export class Transaction {
+  @Prop([String])
+  name = 'Annonymous';
 
-  @Prop()
-  type: string = 'Investment';
+  @Prop([String])
+  type = 'Investment';
 
   @Prop({ default: Date.now })
   date: Date;

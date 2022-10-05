@@ -4,12 +4,12 @@ import { Document } from 'mongoose';
 export type CategoriesDocument = Categories & Document;
 
 @Schema()
-export class Categories extends Document {
-  @Prop()
-  type: string = 'Investment';
+export class Categories {
+  @Prop([String])
+  type = 'Investment';
 
-  @Prop()
-  color: string = '#FCBE44';
+  @Prop([String])
+  color = '#FCBE44';
 }
 
 export const CategoriesSchema = SchemaFactory.createForClass(Categories);

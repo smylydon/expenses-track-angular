@@ -1,18 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { Label, TransactionCategories } from '../models';
 import {
   Transaction,
   TransactionDocument,
 } from '../schemas/transaction.schema';
-
-export interface Label {
-  _id: string;
-  name: string;
-  type: string;
-  amount: number;
-  color: string;
-}
 
 @Injectable()
 export class LabelService {
@@ -21,9 +14,9 @@ export class LabelService {
     private readonly transactioModel: Model<TransactionDocument>
   ) {}
 
-  async findAll(): Promise<Label[] | string> {
-    try {
-      const result = await this.transactioModel.aggregate([
+  async findAll(): Promise<Label[]> {
+    return this.transactioModel
+      .aggregate([
         {
           $lookup: {
             from: 'categories',
@@ -35,23 +28,20 @@ export class LabelService {
         {
           $unwind: '$categories_info',
         },
-      ]);
-      const data = result.map((x) => {
-        return Object.assign(
-          {},
-          {
-            _id: x._id,
-            name: x.name,
-            type: x.type,
-            amount: x.amount,
-            color: x.categories_info['color'],
-          }
-        );
+      ])
+      .then((result: TransactionCategories[]) => {
+        return result.map((tc: TransactionCategories) => {
+          return Object.assign(
+            {},
+            {
+              _id: tc._id,
+              name: tc.name,
+              type: tc.type,
+              amount: tc.amount,
+              color: tc.categories_info.color,
+            }
+          );
+        });
       });
-
-      return <Promise<Label[]>>Promise.resolve(data);
-    } catch (e) {
-      return Promise.reject('Lookup Collection Crror.');
-    }
   }
 }
