@@ -5,11 +5,11 @@ export type TransactionDocument = Transaction & Document;
 
 @Schema()
 export class Transaction {
-  @Prop([String])
-  name = 'Annonymous';
+  @Prop()
+  name: string = 'Annonymous';
 
-  @Prop([String])
-  type = 'Investment';
+  @Prop()
+  type: string = 'Investment';
 
   @Prop({ default: Date.now })
   date: Date;
