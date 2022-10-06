@@ -1,12 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { DummyDto, TransactionDto } from '../dto/transaction.dto';
+import { TransactionDto } from '../dto/transaction.dto';
 import {
   Transaction,
   TransactionDocument,
 } from '../schemas/transaction.schema';
-import { Categories, CategoriesDocument } from '../schemas/categories.schema';
 
 @Injectable()
 export class TransactionService {
@@ -36,7 +35,7 @@ export class TransactionService {
     return await this.model.findByIdAndUpdate(id, transactionDto).exec();
   }
 
-  async delete(dummyDto: DummyDto): Promise<Transaction> {
-    return await this.model.findByIdAndDelete(dummyDto._id).exec();
+  async delete(id: string): Promise<Transaction> {
+    return await this.model.findByIdAndDelete(id).exec();
   }
 }

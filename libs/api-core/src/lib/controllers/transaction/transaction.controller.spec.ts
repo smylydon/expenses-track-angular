@@ -1,6 +1,6 @@
 import { NotFoundException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import { DummyDto, TransactionDto } from '../../dto/transaction.dto';
+import { TransactionDto } from '../../dto/transaction.dto';
 import { TransactionService } from '../../services/transaction.service';
 import { TransactionController } from './transaction.controller';
 
@@ -112,19 +112,17 @@ describe('TransactionController', () => {
   });
 
   describe('delete', () => {
-    const id: DummyDto = <DummyDto>{
-      _id: '123',
-    };
+    const bodyDto: { _id: string } = { _id: '123' };
     it('should call transactionService.delete', async () => {
-      await controller.delete(id);
-      expect(service.delete).toHaveBeenCalledWith(id);
+      await controller.delete(bodyDto);
+      expect(service.delete).toHaveBeenCalledWith(bodyDto._id);
     });
 
     it('should throw exception if transactionService.delete throws exception', async () => {
       jest
         .spyOn(service, 'delete')
         .mockRejectedValueOnce(new NotFoundException());
-      await expect(controller.delete(id)).rejects.toThrow(
+      await expect(controller.delete(bodyDto)).rejects.toThrow(
         new NotFoundException()
       );
     });

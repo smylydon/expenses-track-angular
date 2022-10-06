@@ -4,7 +4,3 @@ export class TransactionDto {
   date: Date;
   amount: number;
 }
-
-export class DummyDto {
-  _id: string;
-}
